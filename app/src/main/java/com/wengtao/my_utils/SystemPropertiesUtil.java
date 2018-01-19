@@ -38,13 +38,12 @@ public class SystemPropertiesUtil {
      * cannot be parsed
      * @throws IllegalArgumentException if the key exceeds 32 characters
      */
-    public static Integer getInt(Context context, String key, int def) throws IllegalArgumentException {
+    public static Integer getInt( String key, int def) throws IllegalArgumentException {
         Integer ret = def;
         try {
 
-            ClassLoader cl = context.getClassLoader();
             @SuppressWarnings("rawtypes")
-            Class SystemProperties = cl.loadClass("android.os.SystemProperties");
+            Class SystemProperties = Class.forName("android.os.SystemProperties");
 
             //Parameters Types
             @SuppressWarnings("rawtypes")
@@ -80,13 +79,12 @@ public class SystemPropertiesUtil {
      * cannot be parsed
      * @throws IllegalArgumentException if the key exceeds 32 characters
      */
-    public static Long getLong(Context context, String key, long def) throws IllegalArgumentException {
+    public static Long getLong(String key, long def) throws IllegalArgumentException {
         Long ret = def;
         try {
 
-            ClassLoader cl = context.getClassLoader();
             @SuppressWarnings("rawtypes")
-            Class SystemProperties = cl.loadClass("android.os.SystemProperties");
+            Class SystemProperties = Class.forName("android.os.SystemProperties");
 
             //Parameters Types
             @SuppressWarnings("rawtypes")
@@ -127,13 +125,12 @@ public class SystemPropertiesUtil {
      * not able to be parsed as a boolean.
      * @throws IllegalArgumentException if the key exceeds 32 characters
      */
-    public static Boolean getBoolean(Context context, String key, boolean def) throws IllegalArgumentException {
+    public static Boolean getBoolean( String key, boolean def) throws IllegalArgumentException {
         Boolean ret = def;
         try {
 
-            ClassLoader cl = context.getClassLoader();
             @SuppressWarnings("rawtypes")
-            Class SystemProperties = cl.loadClass("android.os.SystemProperties");
+            Class SystemProperties = Class.forName("android.os.SystemProperties");
 
             //Parameters Types
             @SuppressWarnings("rawtypes")
@@ -158,39 +155,6 @@ public class SystemPropertiesUtil {
 
         return ret;
 
-    }
-
-    /**
-     * Set the value for the given key.
-     *
-     * @throws IllegalArgumentException if the key exceeds 32 characters
-     * @throws IllegalArgumentException if the value exceeds 92 characters
-     */
-    public static void set(Context context, String key, String val) throws IllegalArgumentException {
-        try {
-
-            @SuppressWarnings("rawtypes")
-            Class SystemProperties = Class.forName("android.os.SystemProperties");
-
-            //Parameters Types
-            @SuppressWarnings("rawtypes")
-            Class[] paramTypes = new Class[2];
-            paramTypes[0] = String.class;
-            paramTypes[1] = String.class;
-
-            Method set = SystemProperties.getMethod("set", paramTypes);
-
-            //Parameters
-            Object[] params = new Object[2];
-            params[0] = key;
-            params[1] = val;
-
-            set.invoke(SystemProperties, params);
-
-        } catch (IllegalArgumentException iAE) {
-            throw iAE;
-        } catch (Exception e) {
-        }
     }
 
 
