@@ -1,7 +1,6 @@
 package com.wengtao.my_utils;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 
 import java.util.Stack;
 

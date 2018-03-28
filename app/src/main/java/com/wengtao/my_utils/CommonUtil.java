@@ -8,6 +8,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 
 /**
  * Created by wt on 2017/12/28.
@@ -18,10 +20,10 @@ public class CommonUtil {
 
 
     /**
-     * @title objectToString
-     * @description 对象转为字符串
      * @param object:Object
      * @return java.lang.String
+     * @title objectToString
+     * @description 对象转为字符串
      * @author wttt
      * @time 2017/12/28  17:03
      * @version
@@ -43,10 +45,10 @@ public class CommonUtil {
     }
 
     /**
-     * @title stringToObject
-     * @description 字符串转为对象
      * @param hexStringToBytes:String
      * @return java.lang.Object
+     * @title stringToObject
+     * @description 字符串转为对象
      * @author wttt
      * @time 2017/12/28  17:02
      * @version
@@ -75,10 +77,10 @@ public class CommonUtil {
 
 
     /**
-     * @title bytesToHexString
-     * @description  byte[]数组转化为字符串
-     * @param  bArray:byte[]
+     * @param bArray:byte[]
      * @return java.lang.String
+     * @title bytesToHexString
+     * @description byte[]数组转化为字符串
      * @author wttt
      * @time 2017/12/28  17:01
      * @version
@@ -103,10 +105,10 @@ public class CommonUtil {
 
 
     /**
+     * @param data:String
+     * @return byte[]
      * @title StringToBytes
      * @description 字符串转为Bytes数组
-     * @param  data:String
-     * @return byte[]
      * @author wttt
      * @time 2017/12/28  17:01
      * @version 1.0
@@ -140,6 +142,30 @@ public class CommonUtil {
             retData[i / 2] = (byte) int_ch;//将转化后的数放入Byte里
         }
         return retData;
+    }
+
+
+    /**
+     * 对字符串md5加密
+     *
+     * @param str
+     * @return
+     * @throws Exception
+     */
+    public static String getMD5Str(String str) {
+        String md5 = null;
+        try {
+            // 生成一个MD5加密计算摘要
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            // 计算md5函数
+            md.update(str.getBytes());
+            // digest()最后确定返回md5 hash值，返回值为8为字符串。因为md5 hash值是16位的hex值，实际上就是8位的字符
+            // BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的hash值
+            md5 = new BigInteger(1, md.digest()).toString(16);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return md5;
     }
 
 }

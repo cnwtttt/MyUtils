@@ -185,7 +185,7 @@ public class FileUtil {
         if (!file.exists()) {
             file.createNewFile();
         }
-        byte[] bytes = new byte[1024];
+        byte[] bytes;
         bytes = content.getBytes();
         int length = content.length();
         FileOutputStream fileOutputStream = new FileOutputStream(file);
