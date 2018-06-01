@@ -77,10 +77,10 @@ public class CommonUtil {
 
 
     /**
-     * @param bArray:byte[]
+     * @param bArray:buffer[]
      * @return java.lang.String
      * @title bytesToHexString
-     * @description byte[]数组转化为字符串
+     * @description buffer[]数组转化为字符串
      * @author wttt
      * @time 2017/12/28  17:01
      * @version
@@ -106,7 +106,7 @@ public class CommonUtil {
 
     /**
      * @param data:String
-     * @return byte[]
+     * @return buffer[]
      * @title StringToBytes
      * @description 字符串转为Bytes数组
      * @author wttt
