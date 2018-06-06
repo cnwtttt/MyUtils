@@ -13,9 +13,7 @@ class TimeUtil {
          * @return 当前时间
          */
         fun getCurrentTime(format: String): String {
-            var date = Date()
-            var simpleDateFormat = SimpleDateFormat(format, Locale.getDefault())
-            return simpleDateFormat.format(date)
+            return SimpleDateFormat(format, Locale.getDefault()).format(Date())
         }
 
         /**
