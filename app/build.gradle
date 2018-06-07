@@ -8,8 +8,8 @@ android {
 //        applicationId "com.wengtao.my_utils"
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode new Integer(new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8")).toString())
+        versionName new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8")).toString()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
